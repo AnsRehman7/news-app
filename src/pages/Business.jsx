@@ -4,25 +4,17 @@ import NewsCard from '../components/NewsCard';
 
 export default function Business() {
   const [articles, setArticles] = useState([]);
-    const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=business pakistan&apiKey=${API_KEY}`
-        );
-        setArticles(response.data.articles);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-      }
-    };
-    fetchNews();
+    axios.get('http://localhost:5000/api/news?topic=business&country=pakistan')
+      .then(res => setArticles(res.data.articles))
+      .catch(err => console.error('Error fetching business news:', err));
   }, []);
 
-  return <div>
-    
-            <h1 className="text-center text-3xl font-bold my-4">Business News</h1>
-            <NewsCard articles={articles} />;
-        </div>
+  return (
+    <div>
+      <h1 className="text-center text-3xl font-bold my-4">Business News</h1>
+      <NewsCard articles={articles} />
+    </div>
+  );
 }

@@ -4,25 +4,17 @@ import NewsCard from '../components/NewsCard';
 
 export default function All() {
   const [articles, setArticles] = useState([]);
-  const API_KEY = '0b231c21fbbd4fd4add15bfe1ac2926a';
 
   useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=world&apiKey=${API_KEY}`
-        );
-        setArticles(response.data.articles);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-      }
-    };
-    fetchNews();
+    axios.get('http://localhost:5000/api/news?topic=world')
+      .then(res => setArticles(res.data.articles))
+      .catch(err => console.error('Error fetching world news:', err));
   }, []);
 
-  return <div>
-    
-            <h1 className="text-center text-3xl font-bold my-4">Top - Headlines</h1>
-            <NewsCard articles={articles} />;
-        </div>
+  return (
+    <div>
+      <h1 className="text-center text-3xl font-bold my-4">Top - Headlines</h1>
+      <NewsCard articles={articles} />
+    </div>
+  );
 }
