@@ -1,0 +1,100 @@
+
+.button-container {
+   height:100px;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: center;
+    
+}
+.news-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
+.news-card {
+  width: 90%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.news-image {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.news-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.news-description {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.news-link {
+  font-size: 14px;
+  color: #1e90ff;
+  text-decoration: none;
+  align-self: flex-start;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+/* 🔽 Responsive Styling for small screens */
+@media (max-width: 768px) {
+  .news-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .news-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .news-content {
+    align-items: center;
+    padding: 20px;
+  }
+
+  .news-link {
+    align-self: center;
+  }
+}
